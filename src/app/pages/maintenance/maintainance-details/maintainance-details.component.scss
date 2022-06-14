@@ -1,0 +1,66 @@
+.key {
+  font-weight: bold;
+  text-align: right;
+}
+@media only screen and (max-width: 900px) {
+  p {
+    font-size: 12px;
+  }
+}
+nb-card-body {
+  overflow: hidden !important;
+}
+.head-cart {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #edf1f7;
+  margin-bottom: 13px;
+}
+.dropdown-item {
+  display: block;
+  width: 100%;
+  padding: 0.25rem 2.3rem;
+  clear: both;
+  font-weight: 400;
+  color: #212529;
+  text-align: inherit;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 0;
+}
+.trackingtxt {
+  background: #f8f8f8;
+  text-align: center;
+  padding: 13px;
+  margin: 1rem 0;
+  h4 {
+    color: #1969b3;
+    margin: 0;
+  }
+}
+.dropdown-item {
+  cursor: pointer;
+}
+.value {
+  font-size: 19px;
+}
+.show-drop-down {
+  display: block;
+  right: 0px;
+  padding: 11px 4px !important;
+  top: 68px;
+  left: unset;
+}
+
+.ar-drop {
+  left: 30px;
+  right: unset;
+}
+
+@media (max-width: 576px) {
+  .ar-drop {
+    left: 0;
+  }
+}

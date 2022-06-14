@@ -1,0 +1,511 @@
+@import url("https://fonts.googleapis.com/css?family=Be+Vietnam+Pro:wght@500&display=swap");
+// themes - our custom or/and out of the box themes
+@import "themes";
+// framework component themes (styles tied to theme variables)
+@import "~@nebular/theme/styles/globals";
+@import "~@nebular/auth/styles/all";
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/grid";
+@import "~@ng-select/ng-select/themes/default.theme.css";
+// loading progress bar theme
+@import "./pace.theme";
+@import "./layout";
+@import "./overrides";
+
+// install the framework and custom global styles
+@include nb-install() {
+  // framework global styles
+  @include nb-theme-global();
+  @include nb-auth-global();
+  @include ngx-layout();
+  // loading progress bar
+  @include ngx-pace-theme();
+  @include nb-overrides();
+}
+
+.custom-heeder {
+  font-weight: bold !important;
+  font-size: 20px !important;
+  line-height: 1.25rem !important;
+  color: #222b45;
+}
+
+.badge {
+  padding: 7px !important;
+  font-size: large !important;
+}
+
+.status-danger {
+  font-size: 16px !important;
+  padding-top: 13px !important;
+  text-align: center !important;
+  font-weight: 800 !important;
+}
+
+::placeholder {
+  opacity: 1 !important;
+  font-size: 16px !important;
+  font-weight: bolder !important;
+}
+
+.nb-theme-default .label {
+  color: #474747 !important;
+  font-size: 17px !important;
+}
+
+.nb-theme-default nb-menu .menu-item a {
+  color: #1a5fae !important;
+}
+
+.menu-title {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.nb-theme-default nb-menu .menu-item a:hover {
+  color: #f3941f !important;
+}
+
+.nb-theme-default nb-menu .menu-item a.active {
+  background-color: transparent;
+  color: #f3941f !important;
+}
+
+nb-layout-column {
+  zoom: 0.8;
+}
+
+nb-menu {
+  zoom: 0.8;
+}
+
+.nb-theme-default .label {
+  font-size: 18px !important;
+}
+
+*:not(i) {
+  font-family: "Cairo", sans-serif !important;
+  // font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif !important;
+}
+
+.nb-theme-default ng2-smart-table table tr td,
+.nb-theme-default ng2-smart-table table tr th,
+.nb-theme-default ng2-smart-table table tr th a {
+  font-size: 20px !important;
+}
+
+.menu-sidebar {
+  width: 12rem !important;
+  font-size: large;
+}
+
+nb-sidebar.collapsed {
+  width: 0 !important;
+}
+
+nb-sidebar.menu-sidebar.left.compacted {
+  width: 3rem !important;
+}
+
+nb-sidebar.menu-sidebar.right.compacted {
+  width: 3rem !important;
+}
+
+ngx-charts-advanced-pie-chart .advanced-pie .chart .legend-items {
+  height: 150px !important;
+}
+
+i.icon.ion-checkmark {
+  color: green !important;
+}
+
+i.icon.ion-close {
+  color: red !important;
+}
+
+.padding-button-right {
+  padding-right: 5%;
+}
+
+.custom-a {
+  text-decoration: underline !important;
+  color: #1a5fae !important;
+  cursor: pointer !important;
+}
+
+.pointer {
+  cursor: pointer !important;
+}
+
+.header-icon {
+  display: flex !important;
+}
+
+.nb-actions.icon {
+  padding-left: 35% !important;
+  margin-top: -8px !important;
+}
+
+nb-layout-header.fixed {
+  // background-color: #f7ae22 !important;
+}
+
+::-webkit-scrollbar {
+  width: 13px !important;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #ffff !important;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #7c7c7c !important;
+}
+
+/* Handle on hover */
+
+.verifymail {
+  background-color: #ffffff;
+  padding: 10px 10px 10px 0px;
+  margin: 0 0 12px 0;
+  border-radius: 8px;
+
+  p {
+    color: red;
+    font-weight: bold;
+    margin: 0 !important;
+  }
+
+  span {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .artext-right {
+    text-align: right !important;
+  }
+}
+
+.main-color {
+  background-color: var(--main-color) !important;
+}
+
+:root {
+  --main-color: #1969b3;
+  --button-color: #1a5fae;
+}
+
+.button-bk {
+  background-color: var(--button-color) !important;
+}
+
+.button-bk:hover {
+  color: white !important;
+}
+
+.color-black {
+  color: #000 !important;
+}
+
+.white-color {
+  color: #ffff;
+}
+
+.show-drop-down {
+  display: block;
+  left: 38px;
+  padding: 11px 4px !important;
+}
+
+.fs-15 {
+  font-size: 18px !important;
+}
+
+.p-5-45 {
+  padding: 5px 45px;
+}
+
+.form-button {
+  padding: 11px 60px !important;
+  color: #ffffff;
+  border-style: solid;
+  border-width: 0.0625rem;
+  text-transform: uppercase;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-family: Open Sans, sans-serif;
+  font-weight: 700;
+  padding-top: 26px;
+  border: none;
+}
+
+.form-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.save {
+  background-color: orange;
+}
+
+.cancel {
+  background-color: var(--main-color) !important;
+}
+
+.c-logo-blue {
+  color: #1a5fae !important;
+}
+
+.flex-space-around {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 26px;
+
+  button {
+    padding: 11px 85px !important;
+    color: #ffffff;
+    border-style: solid;
+    border-width: 0.0625rem;
+    text-transform: uppercase;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    font-family: Open Sans, sans-serif;
+    font-weight: 700;
+    padding-top: 26px;
+    border: none;
+    margin: 5px 8px 0 5px;
+  }
+
+  button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+.flex-direction-c {
+  flex-direction: row;
+}
+
+.margin-right {
+  text-align: -webkit-right !important;
+}
+
+.btn-custom-blue {
+  background-image: linear-gradient(to right, #1a5fae, #1a5fae) !important;
+  color: white !important;
+  border-radius: 10px !important;
+}
+
+.btn-custom-gray {
+  background-image: linear-gradient(to right, #b9b9c3, #b9b9c3) !important;
+  color: white !important;
+  border-radius: 10px !important;
+}
+
+.btn-width {
+  padding: 11px 70px !important;
+}
+
+.btn-custom {
+  background-image: linear-gradient(to right, #1a5fae, #1a5fae) !important;
+  color: white !important;
+}
+
+.btn-group {
+  border-radius: 10px !important;
+}
+
+.btn-save {
+  margin-left: 25px;
+}
+
+button.btn.p-5-45.white-color.button-bk.dropdown-toggle {
+  border-radius: 10px !important;
+}
+
+.capitalize {
+  text-transform: capitalize !important;
+}
+
+.user-picture.image {
+  background-position: center;
+}
+
+button:focus {
+  outline: none !important;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 576px) {
+  .p-5-45 {
+    padding: 5px 20px;
+    margin-top: 10px;
+    font-size: 13px;
+  }
+}
+
+body[dir="rtl"] {
+  .layout-container {
+    flex-direction: row-reverse !important;
+  }
+
+  .dropdown-item {
+    text-align: right;
+  }
+
+  .armargin {
+    margin: 0px 10px;
+  }
+
+  .accept-terms {
+    text-align: right;
+    width: 86%;
+  }
+
+  .monthMargin {
+    margin: 0px 20px;
+  }
+
+  .righttext-lang {
+    text-align: left;
+  }
+
+  .paddingar {
+    padding: 5px 6px;
+  }
+
+  .arlineheight {
+    line-height: 30px;
+  }
+
+  .flex-password-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row-reverse;
+  }
+
+  .menu-sidebar {
+    right: 0;
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .coldir {
+    flex-direction: column;
+  }
+
+  .nopadding {
+    padding: 0px !important;
+  }
+}
+
+@media only screen and (max-width: 866px) {
+  .margin-right {
+    text-align: -webkit-center !important;
+
+    .btn-save {
+      margin-left: 0px;
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .flex-direction-c {
+    flex-direction: column-reverse;
+  }
+
+  // .save,
+  // .cancel {
+  //   margin-bottom: 10px;
+  // }
+}
+
+// @media only screen and (max-width: 375px) {
+//   .flex-space-around button {
+//     padding: 9px 50px !important;
+//   }
+// }
+
+@media only screen and (max-width: 365px) {
+  .divideSec {
+    padding: 21px 0px !important;
+    margin: 7px 0px;
+
+    p {
+      font-size: 18px !important;
+    }
+  }
+}
+
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 700px !important;
+  }
+}
+
+.nb-theme-default nb-sidebar .main-container {
+  width: inherit !important;
+}
+
+@media only screen and (max-width: 634px) {
+  .someclass {
+
+    // transform: scale(0.6, 0.6);
+    .ant-picker-panels {
+      flex-direction: column;
+      zoom: 0.7;
+    }
+  }
+}
+
+.ant-picker-wrappe {
+  transform: scale(0.6, 0.6);
+}
+
+@media only screen and (max-width: 250px) {
+  .smallscreendirection {}
+}
+
+.ng-select .ng-select-container .ng-value-container .ng-placeholder {
+  color: #8f9bb3;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.4px;
+}
+
+input {
+  // color: #8f9bb3 !important;
+  font-weight: 500 !important;
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0.4px;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0.4px;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0.4px;
+}
+.selectPlaceholder{
+   color: #8f9bb3 !important;
+   font-weight: 600 !important;
+}
+.nb-theme-default ng2-smart-table .ng2-smart-actions {
+  width: 30px !important;
+}

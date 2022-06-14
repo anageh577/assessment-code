@@ -1,0 +1,6 @@
+<div class="row verifymail text-center" *ngIf="!(verified) && finishrequest">
+  <div class="container">
+    <p>{{'Email is not verified yet' | translate}} <span (click)="resend()">{{'resend email' | translate}}</span></p>
+  </div>
+</div>
+<!-- <h1>This is the end</h1> -->

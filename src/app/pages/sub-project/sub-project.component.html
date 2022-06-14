@@ -1,0 +1,34 @@
+<nb-card>
+  <nb-card-header>
+    <div class="row">
+      <div class="col-sm-7">
+        <h5 class="c-logo-blue">{{'Phases' | translate}}</h5>
+      </div>
+      <div class="col-sm-5 d-flex justify-content-sm-end coldir">
+        <button [routerLink]="['./add-phase']" nbButton class="armargin padding-button btn-custom-blue" hero>
+          {{ 'Add phase' | translate }}
+        </button>
+        <div class="btn-group nopadding">
+          <button id="menubtn" (click)="toggleMenu()" type="button"
+            class="btn p-5-45 white-color button-bk dropdown-toggle">
+            <i class="fa fa-plus"></i>&nbsp;&nbsp; {{'Action' | translate}}
+          </button>
+          <div class="dropdown-menu" id="dropdownmenu">
+            <a class="dropdown-item fs-15 color-black text-decoration-none"
+              [routerLink]="['../projects/add-project']">{{'Add new project' | translate}}</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item fs-15 color-black  text-decoration-none"
+              [routerLink]="['../company/add-company']">{{'Add new company' | translate}}</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item fs-15 color-black  text-decoration-none"
+              [routerLink]="['../add-project-status']">{{'Add new status' | translate}}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </nb-card-header>
+  <nb-card-body>
+    <ngx-sub-project-table></ngx-sub-project-table>
+  </nb-card-body>
+</nb-card>

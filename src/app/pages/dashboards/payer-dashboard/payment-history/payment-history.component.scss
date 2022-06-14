@@ -1,0 +1,31 @@
+.content {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.0001);
+  box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  margin: 15px;
+}
+
+.head {
+  padding: 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+hr {
+  margin-top: 0;
+}
+
+.stripped {
+  padding: 5px;
+  cursor: pointer;
+}
+
+.stripped:nth-child(2n) {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+.sec-font {
+  font-size: 15px;
+  text-align: center;
+}

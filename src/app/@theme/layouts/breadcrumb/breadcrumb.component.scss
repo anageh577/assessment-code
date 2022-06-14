@@ -1,0 +1,32 @@
+.breadcrumb {
+  background: none;
+  font-size: 0.8em;
+  margin: 0;
+  padding: 0rem 0rem !important;
+  a,
+  span {
+    color: darkgrey;
+  }
+  a:hover,
+  span:hover {
+    color: dimgrey;
+    text-decoration: none;
+  }
+  li {
+    font-family: Open Sans, sans-serif;
+    list-style: none;
+    float: left;
+    font-size: 20px;
+    margin-bottom: 12px;
+    cursor: pointer;
+  }
+}
+nav {
+  margin-top: -17px !important;
+}
+.active-nav{
+  padding: 12px;
+}
+li:hover {
+ color: #f3941e;
+}

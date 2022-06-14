@@ -1,0 +1,39 @@
+@import "../@theme/styles/themes";
+
+@include nb-install-component() {
+  ::ng-deep router-outlet+* {
+    display: block;
+    animation: fade 1s;
+
+    @keyframes fade {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+// smart table
+:host /deep/ ng2-smart-table table tr.ng2-smart-titles th {
+  background-color: #eaeaea;
+  font-weight: bold;
+}
+
+:host /deep/ ng2-smart-table table tr.ng2-smart-titles th a {
+  font-weight: bold;
+}
+
+:host /deep/ ng2-smart-table table tr.ng2-smart-titles th a.sort.asc,
+:host /deep/ ng2-smart-table table tr.ng2-smart-titles th a.sort.desc {
+  font-weight: bold;
+  color: dodgerblue;
+}
+
+.btn-custom {
+  background-image: linear-gradient(to right, #1a5fae, #1a5fae) !important;
+  color: white !important;
+}

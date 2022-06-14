@@ -1,0 +1,215 @@
+<ng-container>
+  <div [ngClass]="{ container: true, 'rtl-container': lang === 'ar' }">
+    <div class="row">
+      <div class="col-12">
+        <p class="invoice">{{ "Invoices" | translate }}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-7 col-sm-12 offset-lg-0">
+        <h1 class="pt-5 main-font" *ngIf="invoices == null || invoices.length < 1">
+          {{ "NO CURRENT INVOICES" | translate }}
+        </h1>
+        <div *ngFor="let invoice of invoices; let i = index">
+          <div *ngIf="invoice?.status !== '2'" class="container" id="{{ i }}">
+            <div class="main-border">
+              <div class="row">
+                <div class="col ar-right">
+                  <input type="checkbox" name="pay" id="check{{ i }}" [(ngModel)]="invoice.isChecked"
+                    (change)="onChange()" />
+                  <label for="check{{ i }}" class="rent font-weight-bold">
+                    {{ invoice?.contract_type | translate }}</label><br />
+                </div>
+                <div class="col ar-left">
+                  <span class="past {{
+                      past_due(invoice?.end_date) ? 'past-col' : 'due-col'
+                    }}">
+                    {{
+                    past_due(invoice?.end_date)
+                    ? ("Past Due" | translate)
+                    : ("Due" | translate)
+                    }}
+                  </span>
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="col-12">
+                  <p class="main-font mid-font font-weight-bold">
+                    <span class="col-gray">{{ "Unit Name" | translate }}</span>
+                    : {{ invoice?.unit_name }}
+                  </p>
+                  <p class="main-font mid-font font-weight-bold">
+                    <span class="col-gray">{{ "Amount" | translate }}</span> :
+                    {{ invoice?.amount }} {{ "EGP" | translate }}
+                  </p>
+
+                  <p class="main-font mid-font font-weight-bold">
+                    <span class="col-gray">{{ "Discount" | translate }}</span> :
+                    {{ invoice?.discount }} {{ "EGP" | translate }}
+                  </p>
+                  <p class="main-font mid-font font-weight-bold">
+                    <span class="col-gray">{{ "Period" | translate }}</span> :
+                    {{ invoice?.start_date }} -
+                    {{ invoice?.end_date }}
+                  </p>
+                  <p class="main-font mid-font font-weight-bold">
+                    <span class="col-gray">{{ "Owner Name" | translate }}</span>
+                    :
+                    {{ invoice?.owner }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="invoice?.status == '2'" class="paid-invoice">
+            {{ "Invoice already paid" | translate }}
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-5 col-sm-12 offset-lg-0 ar-text-right">
+        <div class="main-border">
+          <p class="summary col-gray">{{ "Payment Options" | translate }} :</p>
+          <hr />
+          <div class="sec-container">
+            <div class="label-container">
+              <input type="radio" name="method" id="credit" value="credit" (change)="methodChange('credit')" />
+              <label class="main-font mid-font sec_label" for="credit">
+                {{ "Credit/debit card" | translate }}
+                <img class="{{ lang === 'en' ? 'float-right' : 'float-left' }}"
+                  src="../../../assets/icons/visa.svg" /><img class="{{
+                    lang === 'en' ? 'float-right' : 'float-left'
+                  }} pr-2" src="../../../assets/icons/Master.svg" /></label><br />
+            </div>
+            <div class="label-container">
+              <input type="radio" name="method" id="fawry" value="fawry" (change)="methodChange('fawry')" />
+              <label class="main-font mid-font sec_label" for="fawry">
+                {{ "Fawry payment" | translate }}
+                <img class="{{ lang === 'en' ? 'float-right' : 'float-left' }}" src="../../../assets/images/fawry.png"
+                  alt="" /></label><br />
+            </div>
+            <div class="label-container">
+              <input type="radio" name="method" id="installment" value="installment"
+                (change)="methodChange('installment')" />
+              <label class="main-font mid-font sec_label" for="installment">
+                {{ "Installment" | translate }}
+                <img class="{{
+                    lang === 'en' ? 'float-right' : 'float-left'
+                  }} pr-3 bank" src="../../../assets/icons/icon_banks.svg" alt="" /></label><br />
+            </div>
+            <div *ngIf="payment_method === 'installment'" class="container d-flex">
+              <div (click)="select_installment('6')" [ngClass]="{ selected_value: install_value === '6' }"
+                class="month-div">
+                <h3>6 months</h3>
+              </div>
+              <div (click)="select_installment('12')" [ngClass]="{ selected_value: install_value === '12' }"
+                class="month-div">
+                <h3>12 months</h3>
+              </div>
+              <div (click)="select_installment('18')" [ngClass]="{ selected_value: install_value === '18' }"
+                class="month-div">
+                <h3>18 months</h3>
+              </div>
+            </div>
+            <div class="label-container">
+              <input type="radio" name="method" id="meeza" value="meeza" disabled (change)="methodChange('meeza')" />
+              <label class="main-font mid-font sec_label" for="meeza">
+                {{ "Meeza card" | translate }}
+                <img class="{{
+                    lang === 'en' ? 'float-right' : 'float-left'
+                  }} pr-3" src="../../../assets/images/meeza.png" alt="" /></label><br />
+            </div>
+            <div class="label-container">
+              <input type="radio" name="method" id="wallet" value="wallet" disabled (change)="methodChange('wallet')" />
+              <label class="main-font mid-font sec_label" for="wallet">
+                {{ "Cash wallets" | translate }}
+                <img class="{{
+                    lang === 'en' ? 'float-right' : 'float-left'
+                  }} pr-3" src="../../../assets/icons/wallet.svg" alt="" /></label><br />
+            </div>
+          </div>
+          <hr />
+          <p class="summary col-gray">{{ "Payment Summary" | translate }} :</p>
+          <hr />
+          <div class="container font-weight-bold">
+            <div class="row">
+              <div class="col-6 text-black mid-font pl-4">
+                {{ "Subtotal" | translate }}
+              </div>
+              <div class="col-6 text-black mid-font text-right pr-5">
+                {{ total_amount }} {{ "EGP" | translate }}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6 text-black mid-font pl-4">
+                {{ "Discount" | translate }}
+              </div>
+              <div class="col-6 text-black mid-font text-right pr-5">
+                {{ total_discount }} {{ "EGP" | translate }}
+              </div>
+            </div>
+            <hr />
+            <div class="row">
+              <div class="col-6 text-black mid-font pl-4">
+                {{ "Total" | translate }}
+              </div>
+              <div class="col-6 mid-font col-orange text-right pr-5">
+                {{ total }} {{ "EGP" | translate }}
+              </div>
+            </div>
+            <div class="row terms">
+              <!-- <div class="col-1">
+                <input type="checkbox" id="terms" #terms />
+              </div> -->
+              <div class="col-10">
+                <label for="terms">
+                  <p>
+                    "{{
+                    "By clicking Pay Now button, you agree that you checked our "
+                    | translate
+                    }}
+                    <a routerLink="/privacy-policy" target="_blank">{{ "Payment Policy" | translate }}"</a>
+                  </p>
+                </label>
+              </div>
+            </div>
+            <div class="row pt-3 checkout-btns">
+              <div class="desktopview">
+                <a routerLink="/"><button class="btn text-white cancel font-weight-bold">
+                    {{ "Cancel" | translate }}
+                  </button></a>
+                <button class="btn text-white checkout font-weight-bold" (click)="checkout()"
+                  [disabled]="total <= 0 || payment_method === null">
+                  {{ "Pay Now" | translate }}
+                </button>
+              </div>
+              <div class="mobileview">
+                <button class="btn text-white checkout font-weight-bold" (click)="checkout()"
+                  [disabled]="total <= 0 || payment_method === null">
+                  {{ "Pay Now" | translate }}
+                </button>
+                <a routerLink="/"><button class="btn text-white cancel font-weight-bold">
+                    {{ "Cancel" | translate }}
+                  </button></a>
+
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+        <div class="main-border">
+          <hr />
+          <p class="mid-font text-black ml-3 font-weight-bold">
+            {{ "Contact an expert to support you" | translate }}
+          </p>
+          <a href="tel:+201096504044" class="contact-link">
+            <button class="col-orange btn contact mid-font mb-3 font-weight-bold">
+              {{ "Contact us" | translate }}
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

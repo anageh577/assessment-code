@@ -1,0 +1,27 @@
+.stepper_en {
+  height: 220px;
+  background-image: url(../../../../assets/images/steps_en.svg);
+  width: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-bottom: 18px;
+}
+.stepper_ar {
+  height: 220px;
+  background-image: url(../../../../assets/images/steps_ar.svg);
+  width: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-bottom: 18px;
+}
+
+@media only screen and (max-width: 425px) {
+  .stepper_ar {
+    background-size: 180%;
+  }
+  .stepper_en {
+    background-size: 180%;
+  }
+}

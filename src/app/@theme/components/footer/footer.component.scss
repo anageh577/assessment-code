@@ -1,0 +1,91 @@
+@import "../../styles/themes";
+@import "~@nebular/theme/styles/global/breakpoints";
+@import "~bootstrap/scss/mixins/breakpoints";
+
+@include nb-install-component() {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .socials {
+    font-size: 2rem;
+
+    a {
+      padding: 0.4rem;
+      color: nb-theme(text-hint-color);
+      transition: color ease-out 0.1s;
+
+      &:hover {
+        color: nb-theme(text-basic-color);
+      }
+    }
+  }
+
+  @include media-breakpoint-down(is) {
+    .socials {
+      font-size: 1.5rem;
+    }
+  }
+}
+.termsAndConditions {
+  .help {
+    color: white !important;
+    background: #1a69b3;
+    padding: 7px 37px;
+    border-radius: 21px;
+  }
+  a {
+    text-decoration: none;
+    color: black !important;
+    padding: 0px 15px;
+  }
+}
+@media only screen and (max-width: 859px) {
+  ::ng-deep .nb-theme-default ngx-footer {
+    flex-direction: column;
+    .termsAndConditions {
+      margin-top: 10px;
+    }
+  }
+}
+@media only screen and (max-width: 510px) {
+  span {
+    font-size: 13px;
+  }
+  ::ng-deep .nb-theme-default ngx-footer {
+    flex-direction: column;
+    .termsAndConditions {
+      margin-top: 10px;
+      a {
+        font-size: 13px;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 466px) {
+  ::ng-deep .nb-theme-default ngx-footer {
+    flex-direction: column;
+    .termsAndConditions {
+      margin-top: 10px;
+      a {
+        font-size: 11px;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 422px) {
+  ::ng-deep .nb-theme-default ngx-footer {
+    flex-direction: column;
+    .termsAndConditions {
+      .help {
+        padding: 5px 11px !important;
+      }
+      margin-top: 10px;
+      a {
+        font-size: 11px;
+        padding: 0px 7px !important;
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+<nb-card>
+  <nb-card-header>
+    <div class="row">
+      <div class="col-sm-7">
+        <h5 class="c-logo-blue custom-heeder">{{'Maintenance' | translate}}</h5>
+      </div>
+    </div>
+  </nb-card-header>
+  <nb-card-body>
+    <ng2-smart-table *ngIf="show" [settings]="settings" [source]="maintenanceRequests" (custom)="route($event)"
+      (userRowSelect)="onUserRowSelect($event)">
+    </ng2-smart-table>
+  </nb-card-body>
+</nb-card>
+
+
+<div class="d-flex justify-content-center" *ngIf="!show">
+  <div class="spinner-border"></div>
+</div>

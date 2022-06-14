@@ -1,0 +1,110 @@
+<nb-card>
+  <nb-card-header>
+    <div class="row">
+      <div class="col-sm-7">
+        <h4 class="c-logo-blue custom-heeder">{{'Banks' |translate}}</h4>
+      </div>
+      <div class="col-sm-5 text-right d-flex justify-content-sm-end coldir">
+        <button [routerLink]="['/pages/add-bank']" nbButton class="armargin padding-button btn-custom-blue" hero>
+          {{'Add Bank' | translate}}
+        </button>
+        <div class="btn-group nopadding">
+          <button id="menubtn" (click)="toggleMenu()" type="button"
+            class="btn p-5-45 white-color button-bk dropdown-toggle">
+            <i class="fa fa-plus"></i>&nbsp;&nbsp; {{'Action' | translate}}
+          </button>
+          <div class="dropdown-menu" id="dropdownmenu">
+            <a class="dropdown-item fs-15 color-black text-decoration-none"
+              [routerLink]="['../contracts/add-contract']"> {{'Add New Contract' | translate}}</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item fs-15 color-black text-decoration-none" [routerLink]="['../units/add-unit']">
+              {{'Add New Unit' | translate}}</a>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </nb-card-header>
+
+
+  <nb-card *ngIf="banks.length === 0">
+    <nb-card-header>
+      <p>{{'No data found' | translate}}</p>
+    </nb-card-header>
+  </nb-card>
+  <nb-card *ngFor="let item of banks;let i = index;">
+    <nb-card-header class="bank-header">
+      <div class="row">
+        <div class="col-md-4">
+          <h4 style="color:white">{{item.bank.name}} </h4>
+        </div>
+        <div class="col-md-8">
+          <div class="row">
+            <div class="col-md-4">
+              <button *ngIf="item.verified == 0" class="padding-button bankButtons not-verified">
+                {{'NOT-VERIFIED' | translate}}
+              </button>
+              <button *ngIf="item.verified == 1" class="padding-button bankButtons verified">
+                {{'VERIFIED' | translate}}
+              </button>
+            </div>
+            <div class="col-md-4">
+              <button (click)="navigateTo(item.id)" class="padding-button bankButtons edit">
+                {{'Edit' | translate}}
+              </button>
+            </div>
+            <div class="col-md-4">
+              <button (click)="navigateTo(item.id)" class="padding-button bankButtons setasdefault">
+                {{'SET AS DEFAULT' | translate}}
+              </button>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </nb-card-header>
+    <nb-card-body>
+      <div class="row show-grid">
+        <div class="col-6">
+          <div>
+            <h6 class="fontsize">{{'Beneficiary Name' | translate}}</h6>
+          </div>
+        </div>
+        <div class="col-6">
+          <div>
+            <h6 class="fontsize">{{item.beneficiary_en_name}}</h6>
+          </div>
+        </div>
+      </div>
+      <hr class="mobile">
+      <div class="row show-grid">
+        <div class="col-6">
+          <div>
+            <h6 class="fontsize">{{'Account Number' | translate}}</h6>
+          </div>
+        </div>
+        <div class="col-6">
+          <div>
+            <h6 class="fontsize">{{item.account_no}}</h6>
+          </div>
+        </div>
+      </div>
+      <hr class="mobile">
+      <div class="row show-grid">
+        <div class="col-6">
+          <div>
+            <h6 class="fontsize">{{'Owner Name' | translate}}</h6>
+          </div>
+        </div>
+        <div class="col-6">
+          <div>
+            <h6 class="fontsize">{{currentuserObject?.full_name}}</h6>
+          </div>
+        </div>
+      </div>
+    </nb-card-body>
+  </nb-card>
+  <br><br>
+
+</nb-card>

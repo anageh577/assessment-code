@@ -1,0 +1,7 @@
+<ng2-smart-table *ngIf="show" [settings]="settings" [source]="phases" (custom)="route($event)">
+</ng2-smart-table>
+
+
+<div class="d-flex justify-content-center" *ngIf="!show">
+    <div class="spinner-border"></div>
+  </div>

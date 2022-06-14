@@ -1,0 +1,126 @@
+<div class="row">
+  <div class="col-md-12">
+    <nb-card>
+      <nb-card-header class="nb-card-header-country">
+        <h5 class="c-logo-blue" *ngIf="!id">{{'Add Bank' | translate}}</h5>
+        <h5 class="c-logo-blue" *ngIf="id">{{'Edit Bank' | translate}}</h5>
+      </nb-card-header>
+      <nb-card-body>
+        <form [formGroup]="BankForm">
+          <div class="row">
+            <div class="col-sm-6">
+              <label class="label col-sm-6 col-form-label">Select bank</label>
+              <ng-select (change)="changeBank()" #banks fullWidth formControlName="bank_id"
+                placeholder="{{'Select bank' | translate}}">
+                <ng-option *ngFor="let item of BanksList" [value]="item.id">
+                  {{item.name}}
+                </ng-option>
+              </ng-select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="inputCountryName" class="label col-sm-6 col-form-label">{{'Branch Name' |
+                  translate}}</label>
+                <input type="text" nbInput fullWidth id="inputCountryCode" placeholder="{{'Branch Name' | translate}}"
+                  formControlName="branch">
+                <ng-container *ngIf="BankForm.controls.branch.touched">
+                  <p class="caption status-danger" *ngIf="BankForm.controls.branch.errors?.required">
+                    {{'Branch Name' | translate}} {{'is required' | translate}}!
+                  </p>
+                </ng-container>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="inputCountryCode" class="label col-sm-8 col-form-label">
+                  {{'Account Number' | translate}}</label>
+
+                <input type="text" nbInput fullWidth id="inputCountryCode"
+                  placeholder="{{'Account Number' | translate}}" formControlName="account_no">
+                <ng-container *ngIf="BankForm.controls.account_no.touched">
+                  <p class="caption status-danger" *ngIf="BankForm.controls.account_no.errors?.required">
+                    {{'Account number' | translate}} {{'is required' | translate}}!
+                  </p>
+                </ng-container>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="inputCountryCode" class="label col-sm-2 col-form-label">{{'IBAN' | translate}}</label>
+                <input type="text" nbInput fullWidth id="inputCountryCode" placeholder="{{'IBAN' | translate}}"
+                  formControlName="iban">
+                <ng-container *ngIf="BankForm.controls.iban.touched">
+                  <p class="caption status-danger" *ngIf="BankForm.controls.iban.errors?.required">
+                    {{'IBAN' | translate}} {{'is required' | translate}}!
+                  </p>
+                </ng-container>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="inputCountryCode" class="label col-sm-8 col-form-label">{{'Beneficiary Arabic Name' |
+                  translate}}</label>
+
+                <input type="text" nbInput fullWidth id="inputCountryCode"
+                  placeholder="{{'Beneficiary Arabic Name' | translate}}" formControlName="beneficiary_ar_name">
+                <ng-container *ngIf="BankForm.controls.beneficiary_ar_name.touched">
+                  <p class="caption status-danger" *ngIf="BankForm.controls.beneficiary_ar_name.errors?.required">
+                    {{'Beneficiary Arabic Name' | translate}} {{'is required' | translate}}!
+                  </p>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="inputCountryCode" class="label col-sm-8 col-form-label">{{'Beneficiary English Name' |
+                  translate}}</label>
+
+                <input type="text" nbInput fullWidth id="inputCountryCode"
+                  placeholder="{{'Beneficiary English Name' | translate}}" formControlName="beneficiary_en_name">
+                <ng-container *ngIf="BankForm.controls.beneficiary_en_name.touched">
+                  <p class="caption status-danger" *ngIf="BankForm.controls.beneficiary_en_name.errors?.required">
+                    {{'Beneficiary English Name' | translate}} {{'is required' | translate}}!
+                  </p>
+                </ng-container>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="inputCountryCode" class="label col-sm-8 col-form-label">{{'Swift Code' | translate}}</label>
+                <input type="text" nbInput fullWidth id="inputCountryCode" placeholder="{{'Swift Code' | translate}}"
+                  formControlName="swift_code">
+                <ng-container *ngIf="BankForm.controls.swift_code.touched">
+                  <p class="caption status-danger" *ngIf="BankForm.controls.swift_code.errors?.required">
+                    {{'Swift Code' | translate}} {{'is required' | translate}}!
+                  </p>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12 margin-right">
+              <div class="col-sm-12 flex-space-around flex-direction-c flex-direction-c">
+                <button type="button" class="cancel capitalize btn-custom-gray btn-width"
+                  [routerLink]="['/pages/banks']">{{'Cancel' | translate}}</button>
+                <button type="submit" class="save capitalize btn-save btn-custom-blue btn-width"
+                  [disabled]="!(BankForm.valid)" (click)="addBank()">{{'Save' | translate}}</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>

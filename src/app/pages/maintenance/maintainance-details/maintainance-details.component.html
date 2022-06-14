@@ -1,0 +1,219 @@
+<nb-card>
+  <nb-card-body style="padding: 1rem 0rem">
+    <div class="text-right head-cart">
+      <h5 class="c-logo-blue custom-heeder">
+        {{ "Maintenance details" | translate }}
+      </h5>
+      <button *ngIf="user_type !== 2" 
+        id="menubtn"
+        (click)="toggleMenu()"
+        type="button"
+        class="btn p-5-45 white-color button-bk dropdown-toggle"
+      >
+        <i class="fa fa-plus"></i>&nbsp;&nbsp; {{ "Action" | translate }}
+      </button>
+      <div *ngIf="user_type !== 2"
+        class="dropdown-menu {{ lang === 'ar' ? 'ar-drop' : '' }}"
+        id="dropdownmenu"
+      >
+        <a
+          class="dropdown-item fs-15 color-black text-decoration-none"
+          (click)="updateStatus(0)"
+        >
+          {{ "TO DO" | translate }}
+        </a>
+        <div class="dropdown-divider"></div>
+        <a
+          class="dropdown-item fs-15 color-black text-decoration-none"
+          (click)="updateStatus(1)"
+        >
+          {{ "Assign to technician" | translate }}
+        </a>
+        <div class="dropdown-divider"></div>
+        <a
+          class="dropdown-item fs-15 color-black text-decoration-none"
+          (click)="updateStatus(2)"
+        >
+          {{ "Solved" | translate }}
+        </a>
+      </div>
+    </div>
+    <div class="unit-details-wrapper">
+      <div class="row justify-content-around">
+        <div class="col-sm-5">
+          <div class="row">
+            <div class="col-6">
+              <p class="key custom-heeder">
+                {{ "Maintenance type" | translate }} :
+              </p>
+            </div>
+            <div class="col-6">
+              <p class="value" *ngIf="maintenanceDetails?.type.name">
+                {{ maintenanceDetails?.type.name }}
+              </p>
+              <p style="color: red" *ngIf="!maintenanceDetails?.type.name">
+                {{ "Data not found" | translate }}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-5">
+          <div class="row">
+            <div class="col-6">
+              <p class="key custom-heeder">
+                {{ "Maintenance status" | translate }} :
+              </p>
+            </div>
+            <div class="col-6">
+              <span
+                *ngIf="maintenanceDetails?.req_status == 0"
+                class="value badge badge-secondary"
+              >
+                {{ "TO DO" | translate }}
+              </span>
+              <span
+                *ngIf="maintenanceDetails?.req_status == 1"
+                class="value badge badge-danger"
+              >
+                {{ "Assigned to technician" | translate }}
+              </span>
+              <span
+                *ngIf="maintenanceDetails?.req_status == 2"
+                class="value badge badge-success"
+              >
+                {{ "SOLVED" | translate }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-around">
+        <div class="col-sm-5">
+          <div class="row">
+            <div class="col-6">
+              <p class="key custom-heeder">
+                {{ "Maintenance Description" | translate }} :
+              </p>
+            </div>
+            <div class="col-6">
+              <p class="value" *ngIf="maintenanceDetails?.description">
+                {{ maintenanceDetails?.description }}
+              </p>
+              <p style="color: red" *ngIf="!maintenanceDetails?.description">
+                {{ "Data not found" | translate }}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-5"></div>
+      </div>
+      <div class="trackingtxt">
+        <h4 class="custom-heeder">{{ "Payer Details" | translate }}</h4>
+      </div>
+      <div class="row justify-content-around">
+        <div class="col-sm-5">
+          <div class="row">
+            <div class="col-6">
+              <p class="key custom-heeder">{{ "Payer Name" | translate }} :</p>
+            </div>
+            <div class="col-6">
+              <p class="value" *ngIf="maintenanceDetails?.payer.name">
+                {{ maintenanceDetails?.payer.name }}
+              </p>
+              <p style="color: red" *ngIf="!maintenanceDetails?.payer.name">
+                {{ "Data not found" | translate }}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-5">
+          <div class="row">
+            <div class="col-6">
+              <p class="key custom-heeder">{{ "Payer ID" | translate }} :</p>
+            </div>
+            <div class="col-6">
+              <p class="value" *ngIf="maintenanceDetails?.payer.id">
+                {{ maintenanceDetails?.payer.id }}
+              </p>
+              <p style="color: red" *ngIf="!maintenanceDetails?.payer.id">
+                {{ "Data not found" | translate }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row justify-content-around">
+        <div class="col-sm-5">
+          <div class="row">
+            <div class="col-6">
+              <p class="key custom-heeder">{{ "Payer Email" | translate }} :</p>
+            </div>
+            <div class="col-6">
+              <p class="value" *ngIf="maintenanceDetails?.payer.email">
+                {{ maintenanceDetails?.payer.email }}
+              </p>
+              <p style="color: red" *ngIf="!maintenanceDetails?.payer.email">
+                {{ "Data not found" | translate }}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-5">
+          <div class="row">
+            <div class="col-6">
+              <p class="key custom-heeder">
+                {{ "Payer Mobile" | translate }} :
+              </p>
+            </div>
+            <div class="col-6">
+              <p class="value" *ngIf="maintenanceDetails?.payer?.tel1">
+                {{ maintenanceDetails?.payer?.tel1 }}
+              </p>
+              <p style="color: red" *ngIf="!maintenanceDetails?.payer?.tel1">
+                {{ "Data not found" | translate }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="trackingtxt">
+        <h4 class="custom-heeder">{{ "Unit Details" | translate }}</h4>
+      </div>
+
+      <div class="row justify-content-around">
+        <div class="col-sm-5">
+          <div class="row">
+            <div class="col-6">
+              <p class="key custom-heeder">{{ "Unit ID" | translate }} :</p>
+            </div>
+            <div class="col-6">
+              <p class="value" *ngIf="maintenanceDetails?.unit?.unit_no">
+                {{ maintenanceDetails?.unit?.unit_no }}
+              </p>
+              <p style="color: red" *ngIf="!maintenanceDetails?.unit?.unit_no">
+                {{ "Data not found" | translate }}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-5">
+          <div class="row">
+            <div class="col-6">
+              <p class="key custom-heeder">{{ "Unit name" | translate }} :</p>
+            </div>
+            <div class="col-6">
+              <p class="value" *ngIf="maintenanceDetails?.unit.name">
+                {{ maintenanceDetails?.unit.name }}
+              </p>
+              <p style="color: red" *ngIf="!maintenanceDetails?.unit.name">
+                {{ "Data notfound" | translate }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nb-card-body>
+</nb-card>

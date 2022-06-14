@@ -1,0 +1,205 @@
+<div class="container-fluid lang-but">
+  <ngx-chg-lang></ngx-chg-lang>
+</div>
+<div class="container-fluid">
+  <div class="wrapper">
+    <div class="content text-center">
+      <img src="assets/images/new-logo.png" alt="" />
+      <div class="inputs">
+        <!-- <p class="register">Register</p> -->
+        <form
+          [formGroup]="RegisterForm"
+          aria-labelledby="title"
+          class="d-flex align-items-center justify-content-center w-100 flex-column"
+        >
+          <input
+            class="form-control inputD"
+            full_name="ngModel"
+            id="input-name"
+            name="full_name"
+            formControlName="full_name"
+            placeholder="{{ 'Full Name' | translate }}"
+          />
+          <ng-container *ngIf="RegisterForm.controls.full_name.touched">
+            <p
+              class="caption status-danger"
+              *ngIf="
+                RegisterForm.controls.full_name.errors?.required &&
+                RegisterForm.controls.full_name.touched
+              "
+            >
+              {{ "Full Name" | translate }} {{ "is required" | translate }}!
+            </p>
+          </ng-container>
+
+          <input
+            class="form-control inputD"
+            email="ngModel"
+            type="email"
+            id="input-email"
+            name="email"
+            formControlName="email"
+            pattern=".+@.+..+"
+            placeholder="{{ 'Email' | translate }}"
+          />
+
+          <ng-container *ngIf="RegisterForm.controls.email.touched">
+            <p
+              class="caption status-danger"
+              *ngIf="
+                RegisterForm.controls.email.errors?.required &&
+                RegisterForm.controls.email.touched
+              "
+            >
+              {{ "Email" | translate }} {{ "is required" | translate }}!
+            </p>
+            <p
+              class="caption status-danger"
+              *ngIf="
+                RegisterForm.controls.email.touched &&
+                RegisterForm.controls.email.errors?.pattern
+              "
+            >
+              {{ "Email" | translate }} should be the real one!
+            </p>
+          </ng-container>
+
+          <input
+            class="form-control inputD"
+            type="text"
+            mobile="ngModel"
+            id="input-mobile"
+            name="mobile"
+            formControlName="mobile"
+            placeholder="{{ 'Mobile' | translate }}"
+          />
+          <ng-container *ngIf="RegisterForm.controls.mobile.touched">
+            <p
+              class="caption status-danger"
+              *ngIf="
+                RegisterForm.controls.mobile.errors?.required &&
+                RegisterForm.controls.mobile.touched
+              "
+            >
+              {{ "Mobile" | translate }} {{ "is required" | translate }}!
+            </p>
+          </ng-container>
+          <div class="pass-cont flex-password-wrapper">
+            <input
+              class="form-control pass mb-0"
+              password="ngModel"
+              [type]="fieldTextType ? 'text' : 'password'"
+              id="input-password"
+              name="password"
+              formControlName="password"
+              placeholder="{{ 'Password' | translate }}"
+            />
+            <div
+              class="show-cont {{ lang === 'ar' ? 'float-right' : '' }}"
+              (click)="toggleFieldTextType()"
+            >
+              <span class="show">
+                <i
+                  class="fa"
+                  [ngClass]="{
+                    'fa-eye-slash': !fieldTextType,
+                    'fa-eye': fieldTextType
+                  }"
+                ></i>
+              </span>
+            </div>
+            <ng-container *ngIf="RegisterForm.controls.password.touched">
+              <p
+                class="caption status-danger"
+                *ngIf="
+                  RegisterForm.controls.password.errors?.required &&
+                  RegisterForm.controls.password.touched
+                "
+              >
+                {{ "Password" | translate }} {{ "is required" | translate }}!
+              </p>
+              <p
+                class="caption status-danger"
+                *ngIf="
+                  RegisterForm.controls.email.errors?.minlength ||
+                  RegisterForm.controls.email.errors?.maxLength
+                "
+              >
+                {{
+                  "Password should contain from 6 to 12 characters" | translate
+                }}
+              </p>
+            </ng-container>
+          </div>
+
+          <select
+            formControlName="role"
+            class="form-control {{ lang === 'ar' ? 'ar-pos-x' : 'en-pos-x' }}"
+            placeholder="Select your role"
+            #role
+          >
+            <option value="" disabled selected hidden>
+              {{ "Select your role" | translate }}
+            </option>
+            <option *ngFor="let item of userRoleArr" [value]="item.key">
+              {{ item.value | translate}}
+            </option>
+          </select>
+          <input
+            class="form-control inputD {{
+              role.value != '1' && role.value != '3' ? 'd-none' : ''
+            }}"
+            num_of_units="ngModel"
+            id="num_of_units"
+            name="num_of_units"
+            formControlName="num_of_units"
+            placeholder="{{ 'Number of units' | translate }}"
+            type="number"
+            min="0"
+            #num_of_units
+          />
+          <ng-container *ngIf="RegisterForm.controls.num_of_units.touched">
+            <p class="caption status-danger" *ngIf="num_of_units === null">
+              {{ "Number of units" | translate }}
+              {{ "is required" | translate }}!
+            </p>
+            <p class="caption status-danger" *ngIf="num_of_units.value <= 0">
+              {{ "Number of units should be a positive number" | translate }}!
+            </p>
+          </ng-container>
+
+          <div class="accept-terms">
+            <nb-checkbox name="terms" (change)="acceptTerms($event)">
+              <span class="armargin">
+                {{ "Agree to" | translate }}
+                <a href="/privacy-policy" target="_blank"
+                  ><strong>{{ "Terms & Conditions" | translate }}</strong></a
+                >
+              </span>
+            </nb-checkbox>
+          </div>
+        </form>
+      </div>
+
+      <div class="button">
+        <button
+          (click)="register()"
+          [disabled]="
+            !termsIsAccepted ||
+            !RegisterForm.valid ||
+            ((role.value == '1' || role.value == '3') &&
+              (num_of_units.value == '' || num_of_units.value <= 0))
+          "
+        >
+          <span>{{ "Register" | translate }}</span>
+        </button>
+        <p class="mt-3">
+          {{ "Already have account?" | translate
+          }}<span class="reg" routerLink="../login">{{
+            "Login" | translate
+          }}</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

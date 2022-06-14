@@ -1,0 +1,22 @@
+<div class="d-flex justify-content-center align-items-center container">
+  <div class="card py-5 px-3">
+    <h5 class="m-0">{{'Mobile phone verification' | translate}}</h5><span class="mobile-text">
+      {{'Enter the code we just send on your mobile phone' | translate}} <b class="text-danger">{{phone}}</b></span>
+    <div class="d-flex flex-row mt-5">
+      <input [(ngModel)]="firstDigit" type="text" class="form-control" autofocus="" id="first"
+        (keyup)="next('sec','first','first',$event)">
+      <input [(ngModel)]="secondDigit" type="text" class="form-control" id="sec"
+        (keyup)="next('third','first','sec',$event)">
+      <input [(ngModel)]="thirdDigit" type="text" class="form-control" id="third"
+        (keyup)="next('forth','sec','third',$event)">
+      <input [(ngModel)]="forthDigit" type="text" class="form-control" id="forth"
+        (keyup)="next('fiveth','third','forth',$event)">
+      <input [(ngModel)]="fivethDigit" type="text" class="form-control" id="fiveth"
+        (keyup)="next('fiveth','forth','fiveth',$event)">
+    </div>
+    <button (click)="verify()" class="verify">{{'Verify' | translate}}</button>
+    <div class="text-center mt-5"><span class="d-block mobile-text">{{'Do not receive the code?' |
+        translate}}</span><span class="font-weight-bold text-danger cursor" (click)="resend()">{{'Resend' |
+        translate}}</span></div>
+  </div>
+</div>

@@ -1,0 +1,92 @@
+strong.verified-text {
+  background-image: linear-gradient(to right, #2ce69b, #00d68f);
+  border: none;
+  box-shadow: 0 0 0 0 #00b887, 0 0 0 0 #00997a, 0 0 transparent;
+  color: #ffffff;
+  font-size: large;
+  padding: 8px;
+  border-radius: 18px;
+}
+
+strong.notverified-text {
+  background-image: linear-gradient(to right, gray, gray);
+  border: none;
+  box-shadow: 0 0 0 0 gray, 0 0 0 0 #00997a, 0 0 transparent;
+  color: #ffffff;
+  font-size: large !important;
+  padding: 8px;
+  border-radius: 18px;
+}
+
+.bank-header {
+  background-color: cadetblue;
+}
+
+::ng-deep .nb-theme-default nb-card-header {
+  display: block !important;
+}
+.right-align {
+  text-align: center;
+  display: flex;
+  justify-content: flex-end;
+}
+.mobile {
+  display: none;
+}
+
+@media only screen and (max-width: 575px) {
+  .mobile {
+    display: block;
+  }
+  .fontsize {
+    font-size: 15px;
+  }
+}
+
+@media only screen and (max-width: 446px) {
+  .verified-text {
+    font-size: 13px !important;
+  }
+  .col-8 {
+    h4 {
+      font-size: 0.99rem !important;
+    }
+  }
+  .fontsize {
+    font-size: 10px;
+  }
+}
+.btn-group {
+  padding-left: 30px;
+}
+.bankButtons {
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  padding: 11px;
+  color: white;
+  font-weight: bolder;
+}
+.not-verified {
+  background-color: #6e6b7b;
+}
+.edit {
+  background-color: #1a69b3;
+}
+.setasdefault {
+  background-color: #f79840;
+}
+.verified {
+  background-color: #3ec770;
+}
+@media only screen and (max-width: 902px) {
+  .bankButtons {
+    padding: 10px;
+    font-size: 11px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .bankButtons {
+    margin: 3px 0px;
+  }
+}

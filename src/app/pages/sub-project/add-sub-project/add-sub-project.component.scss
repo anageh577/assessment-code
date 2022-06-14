@@ -1,0 +1,8 @@
+textarea,
+select,
+input {
+  background-color: white !important;
+}
+::ng-deep .nb-theme-default nb-select.appearance-outline.status-basic .select-button {
+  background-color: white !important;
+}

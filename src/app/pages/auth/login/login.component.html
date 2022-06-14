@@ -1,0 +1,122 @@
+<div class="container-fluid lang-but">
+  <ngx-chg-lang></ngx-chg-lang>
+</div>
+<div class="container-fluid wrap">
+  <div class="row w-100">
+    <div class="col-lg-6 col-md-12 pr-0">
+      <div class="content text-center">
+        <img src="assets/images/new-logo.png" alt="" />
+        <div class="inputs">
+          <form
+            [formGroup]="LoginForm"
+            aria-labelledby="title"
+            class="d-flex align-items-center justify-content-center w-100 flex-column"
+          >
+            <input
+              class="form-control w-70 b-r-50"
+              email="ngModel"
+              name="email"
+              id="input-email"
+              pattern=".+@.+\..+"
+              formControlName="email"
+              placeholder="{{ 'Email address' | translate }}"
+            />
+            <ng-container *ngIf="LoginForm.controls.email.touched">
+              <p
+                class="color-red"
+                *ngIf="
+                  LoginForm.controls.email.errors?.required &&
+                  LoginForm.controls.email.touched
+                "
+              >
+                {{ "Email" | translate }} {{ "is required" | translate }}!
+              </p>
+              <p
+                class="color-red"
+                *ngIf="
+                  LoginForm.controls.email.touched &&
+                  LoginForm.controls.email.errors?.pattern
+                "
+              >
+                {{ "please provide valid email" | translate }}!
+              </p>
+            </ng-container>
+            <div class="pass-cont  {{ lang === 'ar' ? 'ar-pass-cont' : '' }}">
+              <input
+                class="form-control pass mb-0"
+                password="ngModel"
+                name="password"
+                [type]="fieldTextType ? 'text' : 'password'"
+                formControlName="password"
+                id="input-password"
+                placeholder="{{ 'Password' | translate }}"
+              />
+              <div class="show-cont" (click)="toggleFieldTextType()">
+                <span class="show">
+                  <i
+                    class="fa"
+                    [ngClass]="{
+                      'fa-eye-slash': !fieldTextType,
+                      'fa-eye': fieldTextType
+                    }"
+                  ></i>
+                </span>
+              </div>
+            </div>
+            <ng-container *ngIf="LoginForm.controls.password.touched">
+              <p
+                class="color-red"
+                *ngIf="LoginForm.controls.password.errors?.required"
+              >
+                Password {{ "is required" | translate }}!
+              </p>
+              <p
+                class="color-red"
+                *ngIf="
+                  LoginForm.controls.password.errors?.minlength ||
+                  LoginForm.controls.password.errors?.maxlength
+                "
+              >
+                {{
+                  "Password should contain from 6 to 12 characters" | translate
+                }}
+              </p>
+            </ng-container>
+          </form>
+        </div>
+        <div class="w-90 d-flex justify-content-between padding-h-14 m-auto">
+          <nb-checkbox (change)="rememberMeFun($event)">
+            {{ "Remember me" | translate }}
+          </nb-checkbox>
+          <div class="text">
+            <p routerLink="../reset-password" class="forget">
+              {{ "forget password?" | translate }}
+            </p>
+          </div>
+        </div>
+        <div class="button">
+          <button [disabled]="!LoginForm.valid" (click)="login()">
+            <span *ngIf="!isLoading">{{ "Login" | translate }}</span>
+            <div class="spinner-border" role="status" *ngIf="isLoading">
+              <span class="sr-only"> Loading... </span>
+            </div>
+          </button>
+          <p class="mt-3">
+            {{ "Dont have an account?" | translate }}
+            <span class="reg" routerLink="../register">{{
+              "Register" | translate
+            }}</span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      class="col-lg-6 col-md-12 pl-0 bk"
+      style="transform: translate(-34px, 0px)"
+    >
+      <!-- <div class="logo d-flex">
+        <img src="assets/images/login.png" alt="">
+      </div> -->
+    </div>
+  </div>
+</div>

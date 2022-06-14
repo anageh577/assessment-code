@@ -1,0 +1,8 @@
+<nav [ngClass]="{'active-nav': breads.length > 0}"  aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li (click)="navigate(breadcrumb,i)" class="breadcrumb-item active" aria-current="page"
+      *ngFor="let breadcrumb of breads;let i = index">
+      {{ breadcrumb | translate }}
+    </li>
+  </ol>
+</nav>

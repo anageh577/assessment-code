@@ -1,0 +1,128 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="container bg-white content">
+              <div class="row">
+                <div class="col-12">
+                  <p class="head text-center">
+                    {{ "Payment History" | translate }}
+                  </p>
+                </div>
+                <div class="col-12">
+                  <hr />
+                </div>
+                <div class="col-12">
+                  <div *ngIf="paid === null">
+                    <p class="text-center sec-font">
+                      {{ "No current payment history" | translate }}
+                    </p>
+                  </div>
+                  <div class="stripped">
+                    <div class="container invoice text-center" *ngIf="paid.length == 0">
+                      <p>{{'There is no payment history' | translate}}</p>
+                    </div>
+                  </div>
+                  <div *ngFor="let invoice of paid" class="stripped" (click)="details(invoice)">
+                    <div class="container invoice">
+                      <div class="row">
+                        <div class="col-12 col-md-6">
+                          <p class="sec-font">
+                            {{ "Invoice Number" | translate }} : #{{
+                            invoice?.id
+                            }}
+                          </p>
+                        </div>
+                        <div class="col-12 col-md-6">
+                          <p class="sec-font">
+                            {{ "Date" | translate }} : {{ invoice?.date_from }}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-12">
+                        <p class="text-center sec-font font-weight-bold">
+                          {{ "Total" | translate }} :
+                          {{ moneyFormatter(invoice?.amount_paid) }}
+                          {{ "EGP" | translate }}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div *ngIf="paid !== null">
+                    <a *ngIf="paid.length >= 5" routerLink="../../payment-history"
+                      class="load text-center font-weight-bold">
+                      {{ "Show All" | translate }}
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="container bg-white content">
+              <div class="row">
+                <div class="col-12">
+                  <p class="head text-center">
+                    {{ "Pending Payments" | translate }}
+                  </p>
+                </div>
+                <div class="col-12">
+                  <hr />
+                </div>
+                <div class="col-12">
+                  <div *ngIf="pending === null">
+                    <p class="text-center sec-font">
+                      {{ "No current pending payments" | translate }}
+                    </p>
+                  </div>
+                  <div class="stripped">
+                    <div class="container invoice text-center" *ngIf="pending.length == 0">
+                      <p>{{'There is no pending invoice' | translate}}</p>
+                    </div>
+                  </div>
+                  <div *ngFor="let invoice of pending" class="stripped" (click)="details(invoice)">
+                    <div class="container invoice" *ngIf="pending.length > 0">
+                      <div class="row">
+                        <div class="col-12 col-md-6">
+                          <p class="sec-font">
+                            {{ "Invoice Number" | translate }} : #{{
+                            invoice?.id
+                            }}
+                          </p>
+                        </div>
+                        <div class="col-12 col-md-6">
+                          <p class="sec-font">
+                            {{ "Date" | translate }} : {{ invoice?.date_from }}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-12">
+                        <p class="text-center font-weight-bold">
+                          {{ "Total" | translate }} :
+                          {{ moneyFormatter(invoice?.amount_remaining) }}
+                          {{ "EGP" | translate }}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div *ngIf="pending !== null">
+                    <a *ngIf="pending.length >= 5" routerLink="../../pending-payments"
+                      class="load text-center font-weight-bold">
+                      {{ "Show All" | translate }}
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,77 @@
+<div class="row">
+  <div class="col-md-12">
+    <nb-card>
+      <nb-card-header class="nb-card-header-company" class="c-logo-blue">
+        <h5 class="c-logo-blue">{{'Payment' | translate}}</h5>
+      </nb-card-header>
+      <nb-card-body>
+        <form [formGroup]="paymentForm">
+          <div class="form-group row">
+            <label for="email" class="label col-sm-2 col-form-label">{{'Email' | translate}}</label>
+            <div class="col-sm-6">
+              <input type="text" nbInput fullWidth id="email" placeholder="{{'Email' | translate}}"
+                formControlName="email" required>
+              <ng-container *ngIf="paymentForm.controls.email.touched">
+                <p class="caption status-danger" *ngIf="paymentForm.controls.email.errors?.required">
+                  {{'Email' | translate}} {{'is required' | translate}}!
+                </p>
+              </ng-container>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="email" class="label col-sm-2 col-form-label">{{'Mobile' | translate}}</label>
+            <div class="col-sm-6">
+              <input type="text" nbInput fullWidth id="email" placeholder="{{'Mobile' | translate}}"
+                formControlName="mobile" required>
+              <ng-container *ngIf="paymentForm.controls.mobile.touched">
+                <p class="caption status-danger" *ngIf="paymentForm.controls.mobile.errors?.required">
+                  {{'Mobile' | translate}} {{'is required' | translate}}!
+                </p>
+              </ng-container>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="email" class="label col-sm-2 col-form-label">{{'Name' | translate}}</label>
+            <div class="col-sm-6">
+              <input type="text" nbInput fullWidth id="email" placeholder="{{'Name' | translate}}"
+                formControlName="name" required>
+              <ng-container *ngIf="paymentForm.controls.name.touched">
+                <p class="caption status-danger" *ngIf="paymentForm.controls.name.errors?.required">
+                  {{'Name' | translate}} {{'is required' | translate}}!
+                </p>
+              </ng-container>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="amount" class="label col-sm-2 col-form-label">{{'Amount' | translate}}</label>
+            <div class="col-sm-6">
+              <input type="text" nbInput fullWidth id="amount" placeholder="{{'Amount' | translate}}"
+                formControlName="amount" required>
+              <ng-container *ngIf="paymentForm.controls.amount.touched">
+                <p class="caption status-danger" *ngIf="paymentForm.controls.amount.errors?.required">
+                  {{'Amount' | translate}} {{'is required' | translate}}!
+                </p>
+              </ng-container>
+            </div>
+          </div>
+
+
+
+
+          <div class="form-group row">
+            <label class="label col-sm-2 col-form-label"></label>
+            <div class="col-sm-12 flex-space-around flex-direction-c flex-direction-c">
+              <button type="submit" [disabled]="!paymentForm.valid" class="save" (click)="submit()">{{'Save' |
+                translate}}</button>
+            </div>
+          </div>
+        </form>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>
+
+
+

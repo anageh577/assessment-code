@@ -1,0 +1,49 @@
+@import "../../../@theme/styles/themes";
+
+@include nb-install-component() {
+  nb-card {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+:host /deep/ ng2-st-tbody-edit-delete {
+  display: flex !important;
+  height: 0 !important;
+}
+:host
+  /deep/
+  ng2-st-tbody-custom
+  a.ng2-smart-action.ng2-smart-action-custom-custom {
+  display: inline-block;
+  width: 50px;
+  text-align: center;
+  font-size: 2em;
+  padding-top: 8px;
+}
+:host
+  /deep/
+  ng2-st-tbody-custom
+  a.ng2-smart-action.ng2-smart-action-custom-custom:hover {
+  color: #5dcfe3;
+}
+
+:host /deep/ ng2-smart-table table tr.ng2-smart-titles th {
+  background-color: #eaeaea;
+  font-weight: bold;
+}
+:host /deep/ ng2-smart-table table tr.ng2-smart-titles th a {
+  font-weight: bold;
+}
+
+:host /deep/ ng2-smart-table table tr.ng2-smart-titles th a.sort.asc,
+:host /deep/ ng2-smart-table table tr.ng2-smart-titles th a.sort.desc {
+  font-weight: bold;
+  color: dodgerblue;
+}
+::ng-deep .nb-theme-default ng2-st-tbody-custom {
+  display: flex;
+}
+
+::ng-deep .nb-theme-default .ng2-smart-row {
+  cursor: pointer;
+}
